@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatórios - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html" class="active">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Relatórios</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Relatórios do Sistema</h2>
+
+                    <p>
+                        Consulte os principais dados cadastrados.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CARDS -->
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3 id="totalUsuarios">
+                            0
+                        </h3>
+
+                        <p>
+                            Total de Usuários
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🏫
+                    </div>
+
+                    <div>
+
+                        <h3 id="totalEscolas">
+                            0
+                        </h3>
+
+                        <p>
+                            Total de Escolas
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <h3 id="usuariosAtivos">
+                            0
+                        </h3>
+
+                        <p>
+                            Usuários Ativos
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🏫
+                    </div>
+
+                    <div>
+
+                        <h3 id="escolasAtivas">
+                            0
+                        </h3>
+
+                        <p>
+                            Escolas Ativas
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RELATÓRIO DETALHADO -->
+
+            <section class="panel">
+
+                <h2>
+                    Resumo dos Dados
+                </h2>
+
+                <br>
+
+                <p>
+                    <strong>Total de usuários cadastrados:</strong>
+                    <span id="relatorioUsuarios">0</span>
+                </p>
+
+                <p>
+                    <strong>Total de escolas cadastradas:</strong>
+                    <span id="relatorioEscolas">0</span>
+                </p>
+
+                <p>
+                    <strong>Usuários ativos:</strong>
+                    <span id="relatorioUsuariosAtivos">0</span>
+                </p>
+
+                <p>
+                    <strong>Escolas ativas:</strong>
+                    <span id="relatorioEscolasAtivas">0</span>
+                </p>
+
+                <br>
+
+                <button
+                    class="new-user"
+                    onclick="gerarRelatorio()">
+
+                    📊 Gerar Relatório
+
+                </button>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        // ===============================
+        // ATUALIZAR RELATÓRIOS
+        // ===============================
+
+        function atualizarRelatorios() {
+
+            const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+            const escolas =
+                JSON.parse(localStorage.getItem("escolas")) || [];
+
+
+            // ===============================
+            // USUÁRIOS
+            // ===============================
+
+            const totalUsuarios =
+                usuarios.length;
+
+
+            const usuariosAtivos =
+                usuarios.length;
+
+
+            // ===============================
+            // ESCOLAS
+            // ===============================
+
+            const totalEscolas =
+                escolas.length;
+
+
+            const escolasAtivas =
+                escolas.filter(function(escola) {
+
+                    return (
+                        escola.status &&
+                        escola.status.toLowerCase() === "ativa"
+                    );
+
+                }).length;
+
+
+            // ===============================
+            // CARDS
+            // ===============================
+
+            document.getElementById("totalUsuarios").textContent =
+                totalUsuarios;
+
+
+            document.getElementById("totalEscolas").textContent =
+                totalEscolas;
+
+
+            document.getElementById("usuariosAtivos").textContent =
+                usuariosAtivos;
+
+
+            document.getElementById("escolasAtivas").textContent =
+                escolasAtivas;
+
+
+            // ===============================
+            // RELATÓRIO
+            // ===============================
+
+            document.getElementById("relatorioUsuarios").textContent =
+                totalUsuarios;
+
+
+            document.getElementById("relatorioEscolas").textContent =
+                totalEscolas;
+
+
+            document.getElementById("relatorioUsuariosAtivos").textContent =
+                usuariosAtivos;
+
+
+            document.getElementById("relatorioEscolasAtivas").textContent =
+                escolasAtivas;
+
+        }
+
+
+        // ===============================
+        // CARREGAR RELATÓRIOS
+        // ===============================
+
+        atualizarRelatorios();
+
+    </script>
+
+</body>
+
+</html>

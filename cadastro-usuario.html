@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Usuário - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html" class="active">
+                    👥 Usuários
+                </a>
+
+                <a href="#">
+                    🏫 Escolas
+                </a>
+
+                <a href="#">
+                    📊 Relatórios
+                </a>
+
+                <a href="#">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="content">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Novo Usuário</h1>
+
+                    <p>
+                        Cadastre um novo usuário no sistema
+                    </p>
+
+                </div>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- FORMULÁRIO -->
+            <section class="form-panel">
+
+                <div class="form-title">
+
+                    <h2>Dados do Usuário</h2>
+
+                    <p>
+                        Preencha as informações abaixo.
+                    </p>
+
+                </div>
+
+
+                <form id="cadastroForm">
+
+
+                    <!-- NOME -->
+                    <div class="form-group">
+
+                        <label for="nome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o nome completo"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="emailUsuario">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailUsuario"
+                            placeholder="Digite o e-mail"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CPF -->
+                    <div class="form-group">
+
+                        <label for="cpf">
+                            CPF
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cpf"
+                            placeholder="Digite o CPF"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TELEFONE -->
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            placeholder="Digite o telefone"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PERFIL -->
+                    <div class="form-group">
+
+                        <label for="perfil">
+                            Perfil
+                        </label>
+
+                        <select id="perfil" required>
+
+                            <option value="">
+                                Selecione um perfil
+                            </option>
+
+                            <option value="administrador">
+                                Administrador
+                            </option>
+
+                            <option value="diretor">
+                                Diretor
+                            </option>
+
+                            <option value="professor">
+                                Professor
+                            </option>
+
+                            <option value="secretario">
+                                Secretário
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ESCOLA -->
+                    <div class="form-group">
+
+                        <label for="escola">
+                            Escola
+                        </label>
+
+                        <select id="escola" required>
+
+                            <option value="">
+                                Selecione uma escola
+                            </option>
+
+                            <option value="escola1">
+                                Escola Municipal Central
+                            </option>
+
+                            <option value="escola2">
+                                Escola Municipal São José
+                            </option>
+
+                            <option value="escola3">
+                                Escola Municipal Nossa Senhora
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SENHA -->
+                    <div class="form-group">
+
+                        <label for="senhaUsuario">
+                            Senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="senhaUsuario"
+                            placeholder="Digite a senha"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRMAR SENHA -->
+                    <div class="form-group">
+
+                        <label for="confirmarSenha">
+                            Confirmar senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            placeholder="Confirme a senha"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- BOTÕES -->
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="cancel-button"
+                            onclick="voltarUsuarios()">
+
+                            Cancelar
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="save-button">
+
+                            Salvar Usuário
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

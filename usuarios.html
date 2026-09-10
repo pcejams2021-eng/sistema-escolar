@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuários - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html" class="active">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Usuários</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Lista de Usuários</h2>
+
+                    <p>
+                        Gerencie os usuários cadastrados no sistema.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="new-user"
+                    onclick="novoUsuario()">
+
+                    + Novo Usuário
+
+                </button>
+
+            </section>
+
+
+            <!-- PESQUISA -->
+
+            <section class="panel">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="pesquisa"
+                        placeholder="Pesquisar usuário..."
+                        onkeyup="pesquisarUsuario()"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- TABELA -->
+
+            <section class="panel table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nome</th>
+
+                            <th>E-mail</th>
+
+                            <th>Perfil</th>
+
+                            <th>Escola</th>
+
+                            <th>Status</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaUsuarios">
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        // ===============================
+        // CARREGAR USUÁRIOS
+        // ===============================
+
+        function carregarUsuarios() {
+
+            const tabela =
+                document.getElementById("tabelaUsuarios");
+
+            const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+            tabela.innerHTML = "";
+
+
+            if (usuarios.length === 0) {
+
+                tabela.innerHTML = `
+                    <tr>
+
+                        <td colspan="6">
+                            Nenhum usuário cadastrado.
+                        </td>
+
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            usuarios.forEach(function(usuario, indice) {
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${usuario.nome}
+                    </td>
+
+                    <td>
+                        ${usuario.email}
+                    </td>
+
+                    <td>
+                        ${usuario.perfil}
+                    </td>
+
+                    <td>
+                        ${usuario.escola}
+                    </td>
+
+                    <td>
+
+                        <span class="status ativo">
+                            Ativo
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="action-button"
+                            onclick="editarUsuario(${indice})">
+
+                            Editar
+
+                        </button>
+
+
+                        <button
+                            class="action-button"
+                            onclick="excluirUsuario(${indice})">
+
+                            Excluir
+
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            });
+
+        }
+
+
+        // ===============================
+        // EDITAR USUÁRIO
+        // ===============================
+
+        function editarUsuario(indice) {
+
+            const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+            const usuario =
+                usuarios[indice];
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome:",
+                    usuario.nome
+                );
+
+
+            if (novoNome === null) {
+
+                return;
+
+            }
+
+
+            if (novoNome.trim() === "") {
+
+                alert("O nome não pode ficar vazio.");
+
+                return;
+
+            }
+
+
+            usuario.nome =
+                novoNome.trim();
+
+
+            usuarios[indice] =
+                usuario;
+
+
+            localStorage.setItem(
+                "usuarios",
+                JSON.stringify(usuarios)
+            );
+
+
+            alert("Usuário atualizado com sucesso!");
+
+
+            carregarUsuarios();
+
+        }
+
+
+        // ===============================
+        // EXCLUIR USUÁRIO
+        // ===============================
+
+        function excluirUsuario(indice) {
+
+            const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+            const usuario =
+                usuarios[indice];
+
+
+            const confirmar =
+                confirm(
+                    "Deseja realmente excluir o usuário " +
+                    usuario.nome +
+                    "?"
+                );
+
+
+            if (!confirmar) {
+
+                return;
+
+            }
+
+
+            usuarios.splice(indice, 1);
+
+
+            localStorage.setItem(
+                "usuarios",
+                JSON.stringify(usuarios)
+            );
+
+
+            alert("Usuário excluído com sucesso!");
+
+
+            carregarUsuarios();
+
+        }
+
+
+        // ===============================
+        // CARREGAR PÁGINA
+        // ===============================
+
+        carregarUsuarios();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

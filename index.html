@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Usuários - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html" class="active">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Usuários</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO DA PÁGINA -->
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Lista de Usuários</h2>
+
+                    <p>
+                        Gerencie os usuários cadastrados no sistema.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="new-user"
+                    onclick="novoUsuario()">
+
+                    + Novo Usuário
+
+                </button>
+
+            </section>
+
+
+            <!-- PESQUISA -->
+            <section class="panel">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="pesquisa"
+                        placeholder="Pesquisar usuário..."
+                        onkeyup="pesquisarUsuario()"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- TABELA -->
+            <section class="panel table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nome</th>
+
+                            <th>E-mail</th>
+
+                            <th>Perfil</th>
+
+                            <th>Status</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaUsuarios">
+
+                        <tr>
+
+                            <td>João Silva</td>
+
+                            <td>joao@email.com</td>
+
+                            <td>Administrador</td>
+
+                            <td>
+                                <span class="status ativo">
+                                    Ativo
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-button"
+                                    onclick="editarUsuario('João Silva')">
+
+                                    Editar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Maria Santos</td>
+
+                            <td>maria@email.com</td>
+
+                            <td>Professor</td>
+
+                            <td>
+                                <span class="status ativo">
+                                    Ativo
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-button"
+                                    onclick="editarUsuario('Maria Santos')">
+
+                                    Editar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Pedro Oliveira</td>
+
+                            <td>pedro@email.com</td>
+
+                            <td>Secretário</td>
+
+                            <td>
+                                <span class="status inativo">
+                                    Inativo
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="action-button"
+                                    onclick="editarUsuario('Pedro Oliveira')">
+
+                                    Editar
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

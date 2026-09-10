@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html" class="active">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Dashboard</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- BEM-VINDO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Bem-vindo ao Sistema Escolar!</h2>
+
+                    <p>
+                        Acompanhe as informações do sistema.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CARDS -->
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <h3 id="totalUsuarios">
+                            0
+                        </h3>
+
+                        <p>
+                            Total de Usuários
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🏫
+                    </div>
+
+                    <div>
+
+                        <h3 id="totalEscolas">
+                            0
+                        </h3>
+
+                        <p>
+                            Total de Escolas
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <h3 id="usuariosAtivos">
+                            0
+                        </h3>
+
+                        <p>
+                            Usuários Ativos
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🏫
+                    </div>
+
+                    <div>
+
+                        <h3 id="escolasAtivas">
+                            0
+                        </h3>
+
+                        <p>
+                            Escolas Ativas
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <section class="panel">
+
+                <h2>
+                    Resumo do Sistema
+                </h2>
+
+                <p>
+                    O Sistema Escolar permite gerenciar
+                    usuários e escolas de forma simples,
+                    organizada e eficiente.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        // ===============================
+        // DADOS DO DASHBOARD
+        // ===============================
+
+        function atualizarDashboard() {
+
+            const usuarios =
+                JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+            const escolas =
+                JSON.parse(localStorage.getItem("escolas")) || [];
+
+
+            // Total de usuários
+
+            document.getElementById("totalUsuarios").textContent =
+                usuarios.length;
+
+
+            // Total de escolas
+
+            document.getElementById("totalEscolas").textContent =
+                escolas.length;
+
+
+            // Usuários ativos
+
+            document.getElementById("usuariosAtivos").textContent =
+                usuarios.length;
+
+
+            // Escolas ativas
+
+            const escolasAtivas =
+                escolas.filter(function(escola) {
+
+                    return (
+                        escola.status &&
+                        escola.status.toLowerCase() === "ativa"
+                    );
+
+                });
+
+
+            document.getElementById("escolasAtivas").textContent =
+                escolasAtivas.length;
+
+        }
+
+
+        // Atualizar quando abrir o Dashboard
+
+        atualizarDashboard();
+
+    </script>
+
+</body>
+
+</html>

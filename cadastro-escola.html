@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Escola - Sistema Escolar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="logo-area">
+                <div class="logo-icon">SE</div>
+                <h2>Sistema Escolar</h2>
+            </div>
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html" class="active">
+                    🏫 Escolas
+                </a>
+
+                <a href="#">
+                    📊 Relatórios
+                </a>
+
+                <a href="#">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <main class="content">
+
+            <header class="topbar">
+                <h1>Cadastro de Escola</h1>
+            </header>
+
+
+            <section class="form-panel">
+
+                <div class="form-title">
+                    <h2>Nova Escola</h2>
+                    <p>Cadastre uma nova unidade escolar no sistema.</p>
+                </div>
+
+
+                <form id="cadastroEscolaForm">
+
+                    <div class="form-group">
+                        <label for="nomeEscola">
+                            Nome da Escola
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeEscola"
+                            placeholder="Digite o nome da escola"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="codigoEscola">
+                            Código da Escola
+                        </label>
+
+                        <input
+                            type="text"
+                            id="codigoEscola"
+                            placeholder="Digite o código da escola"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="enderecoEscola">
+                            Endereço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="enderecoEscola"
+                            placeholder="Digite o endereço"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="telefoneEscola">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="telefoneEscola"
+                            placeholder="(00) 00000-0000"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="diretorEscola">
+                            Diretor(a)
+                        </label>
+
+                        <input
+                            type="text"
+                            id="diretorEscola"
+                            placeholder="Digite o nome do diretor"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="statusEscola">
+                            Status
+                        </label>
+
+                        <select id="statusEscola" required>
+                            <option value="">Selecione</option>
+                            <option value="ativa">Ativa</option>
+                            <option value="inativa">Inativa</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="cancel-button"
+                            onclick="voltarEscolas()"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="save-button"
+                        >
+                            Salvar Escola
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

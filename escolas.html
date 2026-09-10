@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escolas - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html" class="active">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Escolas</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Lista de Escolas</h2>
+
+                    <p>
+                        Gerencie as escolas cadastradas no sistema.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="new-user"
+                    onclick="novaEscola()">
+
+                    + Nova Escola
+
+                </button>
+
+            </section>
+
+
+            <!-- PESQUISA -->
+
+            <section class="panel">
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="pesquisaEscola"
+                        placeholder="Pesquisar escola..."
+                        onkeyup="pesquisarEscola()"
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- TABELA -->
+
+            <section class="panel table-panel">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nome da Escola</th>
+
+                            <th>Código</th>
+
+                            <th>Diretor(a)</th>
+
+                            <th>Telefone</th>
+
+                            <th>Status</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaEscolas">
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // ===============================
+        // CARREGAR ESCOLAS
+        // ===============================
+
+        function carregarEscolas() {
+
+            const tabela =
+                document.getElementById("tabelaEscolas");
+
+            const escolas =
+                JSON.parse(localStorage.getItem("escolas")) || [];
+
+
+            tabela.innerHTML = "";
+
+
+            if (escolas.length === 0) {
+
+                tabela.innerHTML = `
+                    <tr>
+                        <td colspan="6">
+                            Nenhuma escola cadastrada.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            escolas.forEach(function(escola, indice) {
+
+                const linha =
+                    document.createElement("tr");
+
+
+                linha.innerHTML = `
+
+                    <td>
+                        ${escola.nome}
+                    </td>
+
+                    <td>
+                        ${escola.codigo}
+                    </td>
+
+                    <td>
+                        ${escola.diretor}
+                    </td>
+
+                    <td>
+                        ${escola.telefone}
+                    </td>
+
+                    <td>
+
+                        <span class="status ativo">
+                            ${escola.status}
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="action-button"
+                            onclick="editarEscola(${indice})">
+
+                            Editar
+
+                        </button>
+
+
+                        <button
+                            class="action-button"
+                            onclick="excluirEscola(${indice})">
+
+                            Excluir
+
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                tabela.appendChild(linha);
+
+            });
+
+        }
+
+
+        // ===============================
+        // EDITAR ESCOLA
+        // ===============================
+
+        function editarEscola(indice) {
+
+            const escolas =
+                JSON.parse(localStorage.getItem("escolas")) || [];
+
+
+            const escola =
+                escolas[indice];
+
+
+            const novoNome =
+                prompt(
+                    "Digite o novo nome da escola:",
+                    escola.nome
+                );
+
+
+            if (novoNome === null) {
+
+                return;
+
+            }
+
+
+            if (novoNome.trim() === "") {
+
+                alert("O nome da escola não pode ficar vazio.");
+
+                return;
+
+            }
+
+
+            escola.nome =
+                novoNome.trim();
+
+
+            escolas[indice] =
+                escola;
+
+
+            localStorage.setItem(
+                "escolas",
+                JSON.stringify(escolas)
+            );
+
+
+            alert("Escola atualizada com sucesso!");
+
+
+            carregarEscolas();
+
+        }
+
+
+        // ===============================
+        // EXCLUIR ESCOLA
+        // ===============================
+
+        function excluirEscola(indice) {
+
+            const escolas =
+                JSON.parse(localStorage.getItem("escolas")) || [];
+
+
+            const escola =
+                escolas[indice];
+
+
+            const confirmar =
+                confirm(
+                    "Deseja realmente excluir a escola " +
+                    escola.nome +
+                    "?"
+                );
+
+
+            if (!confirmar) {
+
+                return;
+
+            }
+
+
+            escolas.splice(indice, 1);
+
+
+            localStorage.setItem(
+                "escolas",
+                JSON.stringify(escolas)
+            );
+
+
+            alert("Escola excluída com sucesso!");
+
+
+            carregarEscolas();
+
+        }
+
+
+        // ===============================
+        // CARREGAR AO ABRIR A PÁGINA
+        // ===============================
+
+        carregarEscolas();
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

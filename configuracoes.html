@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Configurações - Sistema Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <div class="logo-icon">SE</div>
+
+                <h2>Sistema Escolar</h2>
+
+                <p>Gestão de Usuários</p>
+
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    🏠 Início
+                </a>
+
+                <a href="usuarios.html">
+                    👥 Usuários
+                </a>
+
+                <a href="escolas.html">
+                    🏫 Escolas
+                </a>
+
+                <a href="relatorios.html">
+                    📊 Relatórios
+                </a>
+
+                <a href="configuracoes.html" class="active">
+                    ⚙️ Configurações
+                </a>
+
+            </nav>
+
+
+            <button class="logout" onclick="sair()">
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <main class="content">
+
+            <header class="topbar">
+
+                <h1>Configurações</h1>
+
+                <div class="user">
+                    👤 Administrador
+                </div>
+
+            </header>
+
+
+            <!-- CABEÇALHO -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <h2>Configurações do Sistema</h2>
+
+                    <p>
+                        Personalize as informações e preferências do sistema.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FORMULÁRIO -->
+
+            <section class="panel form-panel">
+
+                <form id="configForm">
+
+                    <div class="form-group">
+
+                        <label for="nomeSistema">
+                            Nome do Sistema
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeSistema"
+                            placeholder="Digite o nome do sistema"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="emailSistema">
+                            E-mail Administrativo
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailSistema"
+                            placeholder="Digite o e-mail administrativo"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="temaSistema">
+                            Tema
+                        </label>
+
+                        <select id="temaSistema">
+
+                            <option value="Claro">
+                                Claro
+                            </option>
+
+                            <option value="Escuro">
+                                Escuro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="notificacoes">
+                            Notificações
+                        </label>
+
+                        <select id="notificacoes">
+
+                            <option value="Ativadas">
+                                Ativadas
+                            </option>
+
+                            <option value="Desativadas">
+                                Desativadas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="save-button">
+
+                            💾 Salvar Configurações
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        // ===============================
+        // CARREGAR CONFIGURAÇÕES
+        // ===============================
+
+        function carregarConfiguracoes() {
+
+            const configuracoes =
+                JSON.parse(
+                    localStorage.getItem("configuracoes")
+                );
+
+
+            if (!configuracoes) {
+
+                return;
+
+            }
+
+
+            document.getElementById("nomeSistema").value =
+                configuracoes.nome || "";
+
+
+            document.getElementById("emailSistema").value =
+                configuracoes.email || "";
+
+
+            document.getElementById("temaSistema").value =
+                configuracoes.tema || "Claro";
+
+
+            document.getElementById("notificacoes").value =
+                configuracoes.notificacoes || "Ativadas";
+
+        }
+
+
+        // ===============================
+        // SALVAR CONFIGURAÇÕES
+        // ===============================
+
+        document
+            .getElementById("configForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const nome =
+                    document.getElementById("nomeSistema").value.trim();
+
+
+                const email =
+                    document.getElementById("emailSistema").value.trim();
+
+
+                const tema =
+                    document.getElementById("temaSistema").value;
+
+
+                const notificacoes =
+                    document.getElementById("notificacoes").value;
+
+
+                if (nome === "") {
+
+                    alert("Digite o nome do sistema.");
+
+                    return;
+
+                }
+
+
+                if (email === "") {
+
+                    alert("Digite o e-mail administrativo.");
+
+                    return;
+
+                }
+
+
+                const configuracoes = {
+
+                    nome: nome,
+
+                    email: email,
+
+                    tema: tema,
+
+                    notificacoes: notificacoes
+
+                };
+
+
+                localStorage.setItem(
+
+                    "configuracoes",
+
+                    JSON.stringify(configuracoes)
+
+                );
+
+
+                alert(
+                    "Configurações salvas com sucesso!"
+                );
+
+            });
+
+
+        // ===============================
+        // CARREGAR AO ABRIR
+        // ===============================
+
+        carregarConfiguracoes();
+
+    </script>
+
+</body>
+
+</html>
