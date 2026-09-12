@@ -2,14 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard - Sistema Escolar</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -17,7 +15,6 @@
     <div class="dashboard">
 
         <!-- MENU LATERAL -->
-
         <aside class="sidebar">
 
             <div class="sidebar-logo">
@@ -29,7 +26,6 @@
                 <p>Gestão de Usuários</p>
 
             </div>
-
 
             <nav class="menu">
 
@@ -55,21 +51,35 @@
 
             </nav>
 
+            <!-- BOTÃO SAIR -->
+            <button
+                type="button"
+    class="logout"
+    onclick="window.location.href='./index.html';">
+    Sair
 
-            <button class="logout" onclick="sair()">
                 Sair
+
             </button>
 
         </aside>
 
 
-        <!-- CONTEÚDO -->
-
+        <!-- CONTEÚDO PRINCIPAL -->
         <main class="content">
 
+            <!-- TOPO -->
             <header class="topbar">
 
-                <h1>Dashboard</h1>
+                <div>
+
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        Visão geral do Sistema Escolar
+                    </p>
+
+                </div>
 
                 <div class="user">
                     👤 Administrador
@@ -78,25 +88,7 @@
             </header>
 
 
-            <!-- BEM-VINDO -->
-
-            <section class="page-header">
-
-                <div>
-
-                    <h2>Bem-vindo ao Sistema Escolar!</h2>
-
-                    <p>
-                        Acompanhe as informações do sistema.
-                    </p>
-
-                </div>
-
-            </section>
-
-
             <!-- CARDS -->
-
             <section class="cards">
 
                 <div class="card">
@@ -107,13 +99,11 @@
 
                     <div>
 
-                        <h3 id="totalUsuarios">
-                            0
-                        </h3>
+                        <h3>Total de Usuários</h3>
 
-                        <p>
-                            Total de Usuários
-                        </p>
+                        <strong id="totalUsuarios">
+                            0
+                        </strong>
 
                     </div>
 
@@ -128,13 +118,11 @@
 
                     <div>
 
-                        <h3 id="totalEscolas">
-                            0
-                        </h3>
+                        <h3>Total de Escolas</h3>
 
-                        <p>
-                            Total de Escolas
-                        </p>
+                        <strong id="totalEscolas">
+                            0
+                        </strong>
 
                     </div>
 
@@ -149,13 +137,11 @@
 
                     <div>
 
-                        <h3 id="usuariosAtivos">
-                            0
-                        </h3>
+                        <h3>Usuários Ativos</h3>
 
-                        <p>
-                            Usuários Ativos
-                        </p>
+                        <strong id="usuariosAtivos">
+                            0
+                        </strong>
 
                     </div>
 
@@ -170,12 +156,33 @@
 
                     <div>
 
-                        <h3 id="escolasAtivas">
+                        <h3>Escolas Ativas</h3>
+
+                        <strong id="escolasAtivas">
                             0
-                        </h3>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PAINEL DE BOAS-VINDAS -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Bem-vindo ao Sistema Escolar
+                        </h2>
 
                         <p>
-                            Escolas Ativas
+                            Utilize o menu lateral para acessar
+                            as funcionalidades do sistema.
                         </p>
 
                     </div>
@@ -185,19 +192,96 @@
             </section>
 
 
-            <!-- INFORMAÇÕES -->
-
+            <!-- ACESSO RÁPIDO -->
             <section class="panel">
 
-                <h2>
-                    Resumo do Sistema
-                </h2>
+                <div class="panel-header">
 
-                <p>
-                    O Sistema Escolar permite gerenciar
-                    usuários e escolas de forma simples,
-                    organizada e eficiente.
-                </p>
+                    <div>
+
+                        <h2>
+                            Acesso rápido
+                        </h2>
+
+                        <p>
+                            Acesse rapidamente as principais áreas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <a
+                        href="usuarios.html"
+                        class="quick-card">
+
+                        <span>👥</span>
+
+                        <strong>
+                            Usuários
+                        </strong>
+
+                        <small>
+                            Gerenciar usuários
+                        </small>
+
+                    </a>
+
+
+                    <a
+                        href="escolas.html"
+                        class="quick-card">
+
+                        <span>🏫</span>
+
+                        <strong>
+                            Escolas
+                        </strong>
+
+                        <small>
+                            Gerenciar escolas
+                        </small>
+
+                    </a>
+
+
+                    <a
+                        href="relatorios.html"
+                        class="quick-card">
+
+                        <span>📊</span>
+
+                        <strong>
+                            Relatórios
+                        </strong>
+
+                        <small>
+                            Visualizar relatórios
+                        </small>
+
+                    </a>
+
+
+                    <a
+                        href="configuracoes.html"
+                        class="quick-card">
+
+                        <span>⚙️</span>
+
+                        <strong>
+                            Configurações
+                        </strong>
+
+                        <small>
+                            Configurar sistema
+                        </small>
+
+                    </a>
+
+                </div>
 
             </section>
 
@@ -207,66 +291,67 @@
 
 
     <!-- JAVASCRIPT -->
-
     <script src="script.js"></script>
 
 
+    <!-- ATUALIZAÇÃO DOS DADOS -->
     <script>
 
-        // ===============================
-        // DADOS DO DASHBOARD
-        // ===============================
+        const usuarios =
+            JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        function atualizarDashboard() {
-
-            const usuarios =
-                JSON.parse(localStorage.getItem("usuarios")) || [];
+        const escolas =
+            JSON.parse(localStorage.getItem("escolas")) || [];
 
 
-            const escolas =
-                JSON.parse(localStorage.getItem("escolas")) || [];
+        const totalUsuarios =
+            document.getElementById("totalUsuarios");
+
+        const totalEscolas =
+            document.getElementById("totalEscolas");
+
+        const usuariosAtivos =
+            document.getElementById("usuariosAtivos");
+
+        const escolasAtivas =
+            document.getElementById("escolasAtivas");
 
 
-            // Total de usuários
+        if (totalUsuarios) {
 
-            document.getElementById("totalUsuarios").textContent =
+            totalUsuarios.textContent =
                 usuarios.length;
-
-
-            // Total de escolas
-
-            document.getElementById("totalEscolas").textContent =
-                escolas.length;
-
-
-            // Usuários ativos
-
-            document.getElementById("usuariosAtivos").textContent =
-                usuarios.length;
-
-
-            // Escolas ativas
-
-            const escolasAtivas =
-                escolas.filter(function(escola) {
-
-                    return (
-                        escola.status &&
-                        escola.status.toLowerCase() === "ativa"
-                    );
-
-                });
-
-
-            document.getElementById("escolasAtivas").textContent =
-                escolasAtivas.length;
 
         }
 
 
-        // Atualizar quando abrir o Dashboard
+        if (totalEscolas) {
 
-        atualizarDashboard();
+            totalEscolas.textContent =
+                escolas.length;
+
+        }
+
+
+        if (usuariosAtivos) {
+
+            usuariosAtivos.textContent =
+                usuarios.length;
+
+        }
+
+
+        if (escolasAtivas) {
+
+            escolasAtivas.textContent =
+                escolas.filter(function(escola) {
+
+                    return escola.status &&
+                        escola.status.toLowerCase() === "ativa";
+
+                }).length;
+
+        }
 
     </script>
 

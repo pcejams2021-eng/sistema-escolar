@@ -5,236 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Usuários - Sistema Escolar</title>
+    <title>Login - Sistema Escolar</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="dashboard">
+    <div class="login-container">
 
-        <!-- MENU LATERAL -->
-        <aside class="sidebar">
+        <div class="login-card">
 
-            <div class="sidebar-logo">
-
+            <div class="login-logo">
                 <div class="logo-icon">SE</div>
-
-                <h2>Sistema Escolar</h2>
-
-                <p>Gestão de Usuários</p>
-
             </div>
 
+            <h1>Sistema Escolar</h1>
 
-            <nav class="menu">
-
-                <a href="dashboard.html">
-                    🏠 Início
-                </a>
-
-                <a href="usuarios.html" class="active">
-                    👥 Usuários
-                </a>
-
-                <a href="escolas.html">
-                    🏫 Escolas
-                </a>
-
-                <a href="relatorios.html">
-                    📊 Relatórios
-                </a>
-
-                <a href="configuracoes.html">
-                    ⚙️ Configurações
-                </a>
-
-            </nav>
+            <p class="login-subtitle">
+                Gestão de Usuários e Unidades Escolares
+            </p>
 
 
-            <button class="logout" onclick="sair()">
-                Sair
-            </button>
+            <form id="loginForm">
 
-        </aside>
+                <div class="form-group">
 
+                    <label for="email">
+                        E-mail
+                    </label>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="content">
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
 
-            <header class="topbar">
-
-                <h1>Usuários</h1>
-
-                <div class="user">
-                    👤 Administrador
                 </div>
 
-            </header>
 
+                <div class="form-group">
 
-            <!-- CABEÇALHO DA PÁGINA -->
-            <section class="page-header">
+                    <label for="senha">
+                        Senha
+                    </label>
 
-                <div>
-
-                    <h2>Lista de Usuários</h2>
-
-                    <p>
-                        Gerencie os usuários cadastrados no sistema.
-                    </p>
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
 
                 </div>
 
 
                 <button
-                    class="new-user"
-                    onclick="novoUsuario()">
+                    type="submit"
+                    class="login-button">
 
-                    + Novo Usuário
+                    Entrar
 
                 </button>
 
-            </section>
+            </form>
 
 
-            <!-- PESQUISA -->
-            <section class="panel">
+            <p class="login-footer">
+                Sistema Escolar © 2026
+            </p>
 
-                <div class="search-box">
-
-                    <input
-                        type="text"
-                        id="pesquisa"
-                        placeholder="Pesquisar usuário..."
-                        onkeyup="pesquisarUsuario()"
-                    >
-
-                </div>
-
-            </section>
-
-
-            <!-- TABELA -->
-            <section class="panel table-panel">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Nome</th>
-
-                            <th>E-mail</th>
-
-                            <th>Perfil</th>
-
-                            <th>Status</th>
-
-                            <th>Ações</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="tabelaUsuarios">
-
-                        <tr>
-
-                            <td>João Silva</td>
-
-                            <td>joao@email.com</td>
-
-                            <td>Administrador</td>
-
-                            <td>
-                                <span class="status ativo">
-                                    Ativo
-                                </span>
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="action-button"
-                                    onclick="editarUsuario('João Silva')">
-
-                                    Editar
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>Maria Santos</td>
-
-                            <td>maria@email.com</td>
-
-                            <td>Professor</td>
-
-                            <td>
-                                <span class="status ativo">
-                                    Ativo
-                                </span>
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="action-button"
-                                    onclick="editarUsuario('Maria Santos')">
-
-                                    Editar
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>Pedro Oliveira</td>
-
-                            <td>pedro@email.com</td>
-
-                            <td>Secretário</td>
-
-                            <td>
-                                <span class="status inativo">
-                                    Inativo
-                                </span>
-                            </td>
-
-                            <td>
-
-                                <button
-                                    class="action-button"
-                                    onclick="editarUsuario('Pedro Oliveira')">
-
-                                    Editar
-
-                                </button>
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </section>
-
-        </main>
+        </div>
 
     </div>
 

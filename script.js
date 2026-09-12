@@ -8,8 +8,8 @@ if (loginForm) {
     loginForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const email = document.getElementById("email").value;
-        const senha = document.getElementById("senha").value;
+        const email = document.getElementById("email").value.trim();
+        const senha = document.getElementById("senha").value.trim();
 
         if (email === "" || senha === "") {
             alert("Preencha todos os campos.");
@@ -53,11 +53,8 @@ function pesquisarUsuario() {
     linhas.forEach(function(linha) {
         const texto = linha.textContent.toLowerCase();
 
-        if (texto.includes(pesquisa)) {
-            linha.style.display = "";
-        } else {
-            linha.style.display = "none";
-        }
+        linha.style.display =
+            texto.includes(pesquisa) ? "" : "none";
     });
 }
 
@@ -66,20 +63,36 @@ function pesquisarUsuario() {
 // CADASTRO DE USUÁRIO
 // ===============================
 
-const cadastroForm = document.getElementById("cadastroForm");
+const cadastroForm =
+    document.getElementById("cadastroForm");
 
 if (cadastroForm) {
     cadastroForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const nome = document.getElementById("nome").value;
-        const email = document.getElementById("emailUsuario").value;
-        const cpf = document.getElementById("cpf").value;
-        const telefone = document.getElementById("telefone").value;
-        const perfil = document.getElementById("perfil").value;
-        const escola = document.getElementById("escola").value;
-        const senha = document.getElementById("senhaUsuario").value;
-        const confirmarSenha = document.getElementById("confirmarSenha").value;
+        const nome =
+            document.getElementById("nome").value;
+
+        const email =
+            document.getElementById("emailUsuario").value;
+
+        const cpf =
+            document.getElementById("cpf").value;
+
+        const telefone =
+            document.getElementById("telefone").value;
+
+        const perfil =
+            document.getElementById("perfil").value;
+
+        const escola =
+            document.getElementById("escola").value;
+
+        const senha =
+            document.getElementById("senhaUsuario").value;
+
+        const confirmarSenha =
+            document.getElementById("confirmarSenha").value;
 
         if (senha !== confirmarSenha) {
             alert("As senhas não são iguais.");
@@ -95,18 +108,21 @@ if (cadastroForm) {
             escola: escola
         };
 
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        let usuarios =
+            JSON.parse(localStorage.getItem("usuarios")) || [];
 
         usuarios.push(usuario);
 
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        localStorage.setItem(
+            "usuarios",
+            JSON.stringify(usuarios)
+        );
 
         alert("Usuário cadastrado com sucesso!");
 
         window.location.href = "usuarios.html";
     });
 }
-
 
 function voltarUsuarios() {
     window.location.href = "usuarios.html";
@@ -130,18 +146,30 @@ function voltarEscolas() {
 // CADASTRO DE ESCOLA
 // ===============================
 
-const cadastroEscolaForm = document.getElementById("cadastroEscolaForm");
+const cadastroEscolaForm =
+    document.getElementById("cadastroEscolaForm");
 
 if (cadastroEscolaForm) {
     cadastroEscolaForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const nome = document.getElementById("nomeEscola").value;
-        const codigo = document.getElementById("codigoEscola").value;
-        const endereco = document.getElementById("enderecoEscola").value;
-        const telefone = document.getElementById("telefoneEscola").value;
-        const diretor = document.getElementById("diretorEscola").value;
-        const status = document.getElementById("statusEscola").value;
+        const nome =
+            document.getElementById("nomeEscola").value;
+
+        const codigo =
+            document.getElementById("codigoEscola").value;
+
+        const endereco =
+            document.getElementById("enderecoEscola").value;
+
+        const telefone =
+            document.getElementById("telefoneEscola").value;
+
+        const diretor =
+            document.getElementById("diretorEscola").value;
+
+        const status =
+            document.getElementById("statusEscola").value;
 
         const escola = {
             nome: nome,
@@ -152,11 +180,15 @@ if (cadastroEscolaForm) {
             status: status
         };
 
-        let escolas = JSON.parse(localStorage.getItem("escolas")) || [];
+        let escolas =
+            JSON.parse(localStorage.getItem("escolas")) || [];
 
         escolas.push(escola);
 
-        localStorage.setItem("escolas", JSON.stringify(escolas));
+        localStorage.setItem(
+            "escolas",
+            JSON.stringify(escolas)
+        );
 
         alert("Escola cadastrada com sucesso!");
 
@@ -170,21 +202,23 @@ if (cadastroEscolaForm) {
 // ===============================
 
 function pesquisarEscola() {
-    const campo = document.getElementById("pesquisaEscola");
+    const campo =
+        document.getElementById("pesquisaEscola");
 
     if (!campo) return;
 
-    const pesquisa = campo.value.toLowerCase();
-    const linhas = document.querySelectorAll("#tabelaEscolas tr");
+    const pesquisa =
+        campo.value.toLowerCase();
+
+    const linhas =
+        document.querySelectorAll("#tabelaEscolas tr");
 
     linhas.forEach(function(linha) {
-        const texto = linha.textContent.toLowerCase();
+        const texto =
+            linha.textContent.toLowerCase();
 
-        if (texto.includes(pesquisa)) {
-            linha.style.display = "";
-        } else {
-            linha.style.display = "none";
-        }
+        linha.style.display =
+            texto.includes(pesquisa) ? "" : "none";
     });
 }
 
@@ -194,10 +228,18 @@ function pesquisarEscola() {
 // ===============================
 
 function salvarConfiguracoes() {
-    const nome = document.getElementById("nomeSistema").value;
-    const email = document.getElementById("emailSistema").value;
-    const tema = document.getElementById("temaSistema").value;
-    const notificacoes = document.getElementById("notificacoes").value;
+
+    const nome =
+        document.getElementById("nomeSistema").value;
+
+    const email =
+        document.getElementById("emailSistema").value;
+
+    const tema =
+        document.getElementById("temaSistema").value;
+
+    const notificacoes =
+        document.getElementById("notificacoes").value;
 
     if (nome === "") {
         alert("Digite o nome do sistema.");
@@ -237,14 +279,16 @@ function gerarRelatorio() {
     const escolas =
         JSON.parse(localStorage.getItem("escolas")) || [];
 
-    const usuariosAtivos = usuarios.length;
+    const usuariosAtivos =
+        usuarios.length;
 
-    const escolasAtivas = escolas.filter(function(escola) {
+    const escolasAtivas =
+        escolas.filter(function(escola) {
 
-        return escola.status &&
-               escola.status.toLowerCase() === "ativa";
+            return escola.status &&
+                escola.status.toLowerCase() === "ativa";
 
-    }).length;
+        }).length;
 
     alert(
         "Relatório gerado com sucesso!\n\n" +
