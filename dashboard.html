@@ -1,356 +1,362 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - Sistema Escolar</title>
+```
+<title>Dashboard - Sistema Escolar</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-    <div class="dashboard">
+```
+<div class="dashboard">
 
-        <!-- MENU LATERAL -->
-        <aside class="sidebar">
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
 
-            <div class="sidebar-logo">
+        <div class="sidebar-logo">
 
-                <div class="logo-icon">SE</div>
+            <div class="logo-icon">SE</div>
 
-                <h2>Sistema Escolar</h2>
+            <h2>Sistema Escolar</h2>
 
-                <p>Gestão de Usuários</p>
+            <p>Gestão de Usuários</p>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="dashboard.html" class="active">
+                🏠 Início
+            </a>
+
+            <a href="usuarios.html">
+                👥 Usuários
+            </a>
+
+            <a href="escolas.html">
+                🏫 Escolas
+            </a>
+
+            <a href="relatorios.html">
+                📊 Relatórios
+            </a>
+
+            <a href="configuracoes.html">
+                ⚙️ Configurações
+            </a>
+
+        </nav>
+
+        <!-- BOTÃO SAIR -->
+        <button
+            type="button"
+            class="logout"
+            onclick="window.location.href='./index.html';">
+            Sair
+        </button>
+
+    </aside>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="content">
+
+        <!-- TOPO -->
+        <header class="topbar">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    Visão geral do Sistema Escolar
+                </p>
 
             </div>
 
-            <nav class="menu">
+            <div class="user">
+                👤 Administrador
+            </div>
 
-                <a href="dashboard.html" class="active">
-                    🏠 Início
-                </a>
-
-                <a href="usuarios.html">
-                    👥 Usuários
-                </a>
-
-                <a href="escolas.html">
-                    🏫 Escolas
-                </a>
-
-                <a href="relatorios.html">
-                    📊 Relatórios
-                </a>
-
-                <a href="configuracoes.html">
-                    ⚙️ Configurações
-                </a>
-
-            </nav>
-
-            <!-- BOTÃO SAIR -->
-            <button
-                type="button"
-                class="logout"
-                onclick="window.location.href='./index.html';">
-                Sair
-            </button>
-
-        </aside>
+        </header>
 
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="content">
+        <!-- CARDS -->
+        <section class="cards">
 
-            <!-- TOPO -->
-            <header class="topbar">
+            <div class="card">
+
+                <div class="card-icon">
+                    👥
+                </div>
 
                 <div>
 
-                    <h1>Dashboard</h1>
+                    <h3>Total de Usuários</h3>
+
+                    <strong id="totalUsuarios">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🏫
+                </div>
+
+                <div>
+
+                    <h3>Total de Escolas</h3>
+
+                    <strong id="totalEscolas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <h3>Usuários Ativos</h3>
+
+                    <strong id="usuariosAtivos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🏫
+                </div>
+
+                <div>
+
+                    <h3>Escolas Ativas</h3>
+
+                    <strong id="escolasAtivas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAINEL DE BOAS-VINDAS -->
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Bem-vindo ao Sistema Escolar
+                    </h2>
 
                     <p>
-                        Visão geral do Sistema Escolar
+                        Utilize o menu lateral para acessar
+                        as funcionalidades do sistema.
                     </p>
 
                 </div>
 
-                <div class="user">
-                    👤 Administrador
-                </div>
+            </div>
 
-            </header>
+        </section>
 
 
-            <!-- CARDS -->
-            <section class="cards">
+        <!-- ACESSO RÁPIDO -->
+        <section class="panel">
 
-                <div class="card">
+            <div class="panel-header">
 
-                    <div class="card-icon">
-                        👥
-                    </div>
+                <div>
 
-                    <div>
+                    <h2>
+                        Acesso rápido
+                    </h2>
 
-                        <h3>Total de Usuários</h3>
-
-                        <strong id="totalUsuarios">
-                            0
-                        </strong>
-
-                    </div>
+                    <p>
+                        Acesse rapidamente as principais áreas.
+                    </p>
 
                 </div>
 
+            </div>
 
-                <div class="card">
 
-                    <div class="card-icon">
-                        🏫
-                    </div>
+            <div class="quick-actions">
 
-                    <div>
+                <a
+                    href="usuarios.html"
+                    class="quick-card">
 
-                        <h3>Total de Escolas</h3>
+                    <span>👥</span>
 
-                        <strong id="totalEscolas">
-                            0
-                        </strong>
+                    <strong>
+                        Usuários
+                    </strong>
 
-                    </div>
+                    <small>
+                        Gerenciar usuários
+                    </small>
 
-                </div>
+                </a>
 
 
-                <div class="card">
+                <a
+                    href="escolas.html"
+                    class="quick-card">
 
-                    <div class="card-icon">
-                        ✅
-                    </div>
+                    <span>🏫</span>
 
-                    <div>
+                    <strong>
+                        Escolas
+                    </strong>
 
-                        <h3>Usuários Ativos</h3>
+                    <small>
+                        Gerenciar escolas
+                    </small>
 
-                        <strong id="usuariosAtivos">
-                            0
-                        </strong>
+                </a>
 
-                    </div>
 
-                </div>
+                <a
+                    href="relatorios.html"
+                    class="quick-card">
 
+                    <span>📊</span>
 
-                <div class="card">
+                    <strong>
+                        Relatórios
+                    </strong>
 
-                    <div class="card-icon">
-                        🏫
-                    </div>
+                    <small>
+                        Visualizar relatórios
+                    </small>
 
-                    <div>
+                </a>
 
-                        <h3>Escolas Ativas</h3>
 
-                        <strong id="escolasAtivas">
-                            0
-                        </strong>
+                <a
+                    href="configuracoes.html"
+                    class="quick-card">
 
-                    </div>
+                    <span>⚙️</span>
 
-                </div>
+                    <strong>
+                        Configurações
+                    </strong>
 
-            </section>
+                    <small>
+                        Configurar sistema
+                    </small>
 
+                </a>
 
-            <!-- PAINEL DE BOAS-VINDAS -->
-            <section class="panel">
+            </div>
 
-                <div class="panel-header">
+        </section>
 
-                    <div>
+    </main>
 
-                        <h2>
-                            Bem-vindo ao Sistema Escolar
-                        </h2>
+</div>
 
-                        <p>
-                            Utilize o menu lateral para acessar
-                            as funcionalidades do sistema.
-                        </p>
 
-                    </div>
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
 
-                </div>
 
-            </section>
+<!-- ATUALIZAÇÃO DOS DADOS -->
+<script>
 
+    const usuarios =
+        JSON.parse(localStorage.getItem("usuarios")) || [];
 
-            <!-- ACESSO RÁPIDO -->
-            <section class="panel">
+    const escolas =
+        JSON.parse(localStorage.getItem("escolas")) || [];
 
-                <div class="panel-header">
 
-                    <div>
+    const totalUsuarios =
+        document.getElementById("totalUsuarios");
 
-                        <h2>
-                            Acesso rápido
-                        </h2>
+    const totalEscolas =
+        document.getElementById("totalEscolas");
 
-                        <p>
-                            Acesse rapidamente as principais áreas.
-                        </p>
+    const usuariosAtivos =
+        document.getElementById("usuariosAtivos");
 
-                    </div>
+    const escolasAtivas =
+        document.getElementById("escolasAtivas");
 
-                </div>
 
+    if (totalUsuarios) {
 
-                <div class="quick-actions">
+        totalUsuarios.textContent =
+            usuarios.length;
 
-                    <a
-                        href="usuarios.html"
-                        class="quick-card">
+    }
 
-                        <span>👥</span>
 
-                        <strong>
-                            Usuários
-                        </strong>
+    if (totalEscolas) {
 
-                        <small>
-                            Gerenciar usuários
-                        </small>
+        totalEscolas.textContent =
+            escolas.length;
 
-                    </a>
+    }
 
 
-                    <a
-                        href="escolas.html"
-                        class="quick-card">
+    if (usuariosAtivos) {
 
-                        <span>🏫</span>
+        usuariosAtivos.textContent =
+            usuarios.length;
 
-                        <strong>
-                            Escolas
-                        </strong>
+    }
 
-                        <small>
-                            Gerenciar escolas
-                        </small>
 
-                    </a>
+    if (escolasAtivas) {
 
+        escolasAtivas.textContent =
+            escolas.filter(function(escola) {
 
-                    <a
-                        href="relatorios.html"
-                        class="quick-card">
+                return escola.status &&
+                    escola.status.toLowerCase() === "ativa";
 
-                        <span>📊</span>
+            }).length;
 
-                        <strong>
-                            Relatórios
-                        </strong>
+    }
 
-                        <small>
-                            Visualizar relatórios
-                        </small>
-
-                    </a>
-
-
-                    <a
-                        href="configuracoes.html"
-                        class="quick-card">
-
-                        <span>⚙️</span>
-
-                        <strong>
-                            Configurações
-                        </strong>
-
-                        <small>
-                            Configurar sistema
-                        </small>
-
-                    </a>
-
-                </div>
-
-            </section>
-
-        </main>
-
-    </div>
-
-
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
-
-
-    <!-- ATUALIZAÇÃO DOS DADOS -->
-    <script>
-
-        const usuarios =
-            JSON.parse(localStorage.getItem("usuarios")) || [];
-
-        const escolas =
-            JSON.parse(localStorage.getItem("escolas")) || [];
-
-
-        const totalUsuarios =
-            document.getElementById("totalUsuarios");
-
-        const totalEscolas =
-            document.getElementById("totalEscolas");
-
-        const usuariosAtivos =
-            document.getElementById("usuariosAtivos");
-
-        const escolasAtivas =
-            document.getElementById("escolasAtivas");
-
-
-        if (totalUsuarios) {
-
-            totalUsuarios.textContent =
-                usuarios.length;
-
-        }
-
-
-        if (totalEscolas) {
-
-            totalEscolas.textContent =
-                escolas.length;
-
-        }
-
-
-        if (usuariosAtivos) {
-
-            usuariosAtivos.textContent =
-                usuarios.length;
-
-        }
-
-
-        if (escolasAtivas) {
-
-            escolasAtivas.textContent =
-                escolas.filter(function(escola) {
-
-                    return escola.status &&
-                        escola.status.toLowerCase() === "ativa";
-
-                }).length;
-
-        }
-
-    </script>
+</script>
+```
 
 </body>
 
